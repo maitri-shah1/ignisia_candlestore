@@ -1,0 +1,21 @@
+<% layout("\layouts/boilerplate") -%>
+
+<div class="container mt-5 mb-5">
+    <h2 class="text-center">Cart Summary</h2>
+    <p class="text-center">Ready to check out? Review your items before you proceed!</p>
+    <div class="row mt-5" id="cart-items">
+        <!-- Cart items will be inserted here dynamically -->
+    </div>
+    <hr>
+
+    <!-- Proceed to Checkout Button -->
+    <div class="text-center mt-4">
+        <button id="proceedToCheckout" class="btn btn-success btn-lg">Proceed to Checkout</button>
+    </div>
+</div>
+
+<script>
+  document.getElementById("proceedToCheckout").addEventListener("click", function () {
+      window.location.href = "/checkout"; // Redirect to checkout page
+  });
+</script>

@@ -1,0 +1,273 @@
+body{
+    background-color:rgb(255, 245, 234) !important;
+}
+/* NAVBAR */
+.navbar-nav .nav-link:hover {
+    color: #c79786 !important; 
+    transition: color 0.3s ease !important; 
+  }
+.list-inline .text-dark{
+    text-decoration: none !important;
+}
+
+/* HOME */
+/* banner */
+.banner-section {
+    position: relative;
+    width: 100%;
+    height: 85vh; 
+    background: url('/images/banner.png') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay to improve text visibility */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff; /* White text */
+    padding: 20px;
+}
+
+.banner-title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.banner-text {
+    font-size: 1.5rem;
+    max-width: 700px;
+    text-align: center;
+}
+
+.btn-light {
+    background-color: bisque !important; /* Soft pink button */
+    color: #333;
+    border: none;
+    padding: 10px 28px;
+    font-size: 1rem !important;
+    border-radius: 50px !important;
+}
+
+.btn-light:hover {
+    background-color: #E3C5C2;
+}
+
+/* container */
+@media (max-width: 768px) {
+    .image-section img {
+        height: 200px !important;
+    }
+}
+@media (max-width: 576px) {
+    .image-section img {
+        height: 150px !important;
+    }
+}
+
+/* best sellers */
+.product-card {
+    background-color:rgb(253, 241, 225);
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+.product-card img {
+    max-width: 100%;
+    height: 220px;
+    margin-bottom: 15px;
+}
+.price {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* testinomial */
+
+.testimonial-container {
+    text-align: center;
+    padding: 50px 20px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: url('/images/testinomials-banner.jpg') no-repeat center center/cover;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+.testimonial {
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+.testimonial.active {
+    display: block;
+    opacity: 1;
+}
+.testimonial-text {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #ffffff;
+    
+}
+.testimonial-author {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ffffff;
+}
+.dots {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+.dots span {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.dots span.active {
+    background-color: #252525;
+}
+@media (max-width: 768px) {
+    .testimonial-text {
+        font-size: 1em;
+    }
+    .testimonial-author {
+        font-size: 1.2em;
+    }
+}
+@media (max-width: 480px) {
+    .testimonial-text {
+        font-size: 0.9em;
+    }
+    .testimonial-author {
+        font-size: 1em;
+    }
+}
+
+/* FOOTER */
+.gallery-container {
+            display: flex;
+            justify-content:center;
+            gap: 15px;
+            padding: 90px 20px 0px 20px;
+            flex-wrap: wrap;
+        }
+        .gallery-container img {
+            width: 234px;
+            height: 210px;
+            object-fit: cover;
+        }
+
+/* ABOUT */
+
+.hero-section {
+    background: url('/images/banner-1.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 150px 20px;
+}
+
+.feature-icon {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+.img-fluid{
+    border-radius: 90px;
+}
+.top{
+    margin-top: 30px;
+}
+
+/* CONTACT */
+.contact-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 60px 20px;
+}
+.contact-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.btn-custom {
+    background-color: #ce8d75 !important;
+    color: #fff;
+    border: none;
+    width: 100px;
+}
+.btn-custom:hover {
+    background-color: #8a5643;
+}
+.store-info {
+    background: #f8f8f8;
+    padding: 190px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.contact-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+@media (min-width: 768px) {
+    .contact-layout {
+        flex-direction: row;
+    }
+}
+
+/* shop */
+.hero-sections {
+    position: relative;
+    color: white;
+    text-align: center;
+    padding: 150px 20px;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero-sections::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/banner-2.jpg') center/cover no-repeat;
+    filter: brightness(50%); /* Darkens the background without affecting text */
+    z-index: -1;
+}
+
+/* SHOP */
+        .card-img-top {
+            height: 250px; /* Fixed image height */
+            object-fit: cover; /* Ensures images fit without distortion */
+        }
+        .card {
+            height: 100%; /* Makes all cards equal height */
+        }

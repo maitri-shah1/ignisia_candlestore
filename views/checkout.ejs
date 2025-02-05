@@ -1,0 +1,97 @@
+<% layout("\layouts/boilerplate") -%>
+
+<div class="container mt-5 mb-5">
+    <h2 class="text-center">Order Summary</h2>
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody id="order-summary">
+            <!-- Order items will be inserted dynamically -->
+        </tbody>
+    </table>
+    <h4 class="text-end">Total Price: Rs. <span id="total-price">0</span></h4>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-primary btn-lg" id="confirm-order-btn">Confirm Order</button>
+    </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paymentModalLabel">Choose Payment Method</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="payment-form">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" value="UPI" id="upi" checked>
+                        <label class="form-check-label" for="upi">UPI</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" value="Credit/Debit Card" id="card">
+                        <label class="form-check-label" for="card">Credit/Debit Card</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" value="Cash on Delivery" id="cod">
+                        <label class="form-check-label" for="cod">Cash on Delivery</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" id="confirm-payment">Proceed to Payment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const orderSummary = document.getElementById("order-summary");
+    let totalPrice = 0;
+
+    orderSummary.innerHTML = "";
+    cartItems.forEach(item => {
+        let priceString = item.price.match(/\d+/g);
+        let price = priceString ? parseFloat(priceString.join("")) : 0;
+        const quantity = item.quantity || 1;
+        const subtotal = price * quantity;
+        totalPrice += subtotal;
+
+        orderSummary.innerHTML += `
+            <tr>
+                <td>${item.id}</td>
+                <td>Rs. ${price.toFixed(2)}</td>
+                <td>${quantity}</td> 
+                <td>Rs. ${subtotal.toFixed(2)}</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("total-price").innerText = `Rs. ${totalPrice.toFixed(2)}`;
+
+    // Show payment modal on Confirm Order click
+    document.getElementById("confirm-order-btn").addEventListener("click", function () {
+        var paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+        paymentModal.show();
+    });
+
+    // Handle payment confirmation
+    document.getElementById("confirm-payment").addEventListener("click", function () {
+        const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
+        alert(`Order confirmed! Payment Method: ${selectedPayment}`);
+        localStorage.removeItem("cartItems"); // Clear cart after order
+        window.location.href = "/thank-you"; // Redirect to a Thank You page (create this route)
+    });
+});
+</script>
